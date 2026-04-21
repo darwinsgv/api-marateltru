@@ -140,11 +140,11 @@ const getFacturaWispPorCedula = async (req, res) => {
 
 
 const getFacturaWispPorNombreCompleto = async (req, res) => {
-  const { nombrecompleto } = req.params;
+  const { nombre } = req.params;
 
   try {
     let url = 'https://api.wisphub.net/api/facturas/?limit=100';
-    let facturasCliente = [];
+    let resultados = [];
 
     while (url) {
       const response = await axios.get(url, {
@@ -155,31 +155,32 @@ const getFacturaWispPorNombreCompleto = async (req, res) => {
 
       const data = response.data;
 
-      const filtradas = data.results.filter(
-        f => f.cliente && f.cliente.nombre == nombrecompleto
-      );
+      const filtradas = data.results.filter(f => {
+        // Validación segura
+        if (!f.cliente || !f.cliente.nombre) return false;
 
-      facturasCliente = facturasCliente.concat(filtradas);
+        return f.cliente.nombre.toLowerCase().includes(nombre.toLowerCase());
+      });
+
+      resultados = resultados.concat(filtradas);
 
       url = data.next;
     }
 
-    if (facturasCliente.length === 0) {
-      return res.status(404).json({ message: 'Factura por nombre no encontrada' });
+    if (resultados.length === 0) {
+      return res.status(404).json({ message: 'No se encontraron facturas' });
     }
 
-    res.json(facturasCliente);
+    res.json(resultados);
 
   } catch (error) {
     console.error(error.response?.data || error.message);
 
     res.status(500).json({
-      error: 'Error al buscar factura'
+      error: 'Error al buscar facturas por nombre'
     });
   }
 };
-
-
 
 /*
 //NO BORRAR ESTA EXCELENT
