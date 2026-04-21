@@ -12,6 +12,8 @@ const router = express.Router();
 const wisphubController = require('../controllers/wisphubController');
 router.get('/clientes/:cedula', wisphubController.getClienteWispPorCedula);
 router.get('/facturas/:cedula', wisphubController.getFacturaWispPorCedula);
+router.get('/facturas/:nombrecompleto', wisphubController.getFacturaWispPorNombreCompleto);
+
 module.exports = router;
 
 //NO BORRAR ESTA PERFECTO 20-04-2026, sirve sin controllers
