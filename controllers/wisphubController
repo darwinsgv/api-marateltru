@@ -26,6 +26,75 @@ const getClientesWisp = async (req, res) => {
 };
 
 
+/*
+const getClienteWispPorCedula = async (req, res) => {
+  const { cedula } = req.params;
+
+  try {
+    let url = 'https://api.wisphub.net/api/clientes/?limit=100';
+
+    while (url) {
+      const response = await axios.get(url, {
+        headers: {
+          Authorization: `Api-Key ${process.env.WISP_API_KEY}`
+        }
+      });
+
+      const data = response.data;
+
+      const cliente = data.results.find(c => c.cedula === cedula);
+
+      if (cliente) {
+        return res.json(cliente);
+      }
+
+      url = data.next; // 👉 siguiente página
+    }
+
+    return res.status(404).json({ message: 'Cliente no encontrado' });
+
+  } catch (error) {
+    console.error(error.response?.data || error.message);
+
+    res.status(500).json({
+      error: 'Error al buscar cliente'
+    });
+  }
+};
+*/
+
+const getClienteWispPorCedula = async (req, res) => {
+  const { cedula } = req.params;
+
+  try {
+    const response = await axios.get(
+      `https://api.wisphub.net/api/clientes/?cedula=${cedula}`,
+      {
+        headers: {
+          Authorization: `Api-Key ${process.env.WISP_API_KEY}`
+        }
+      }
+    );
+
+    const cliente = response.data.results[0];
+
+    if (!cliente) {
+      return res.status(404).json({ message: 'Cliente no encontrado' });
+    }
+
+    res.json(cliente);
+
+  } catch (error) {
+    console.error(error.response?.data || error.message);
+
+    res.status(500).json({
+      error: 'Error al buscar cliente'
+    });
+  }
+};
+
+/*
+//NO BORRAR ESTA EXCELENT
 const getClienteWispPorCedula = async (req, res) => {
   const { cedula } = req.params;
 
@@ -57,7 +126,7 @@ const getClienteWispPorCedula = async (req, res) => {
     });
   }
 };
-
+*/
 
 const getFacturaWispPorCedula = async (req, res) => {
   const { cedula } = req.params;
