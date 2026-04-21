@@ -139,6 +139,47 @@ const getFacturaWispPorCedula = async (req, res) => {
 };
 
 
+const getFacturaWispPorNombreCompleto = async (req, res) => {
+  const { nombrecompleto } = req.params;
+
+  try {
+    let url = 'https://api.wisphub.net/api/facturas/?limit=100';
+    let facturasCliente = [];
+
+    while (url) {
+      const response = await axios.get(url, {
+        headers: {
+          Authorization: `Api-Key ${process.env.WISP_API_KEY}`
+        }
+      });
+
+      const data = response.data;
+
+      const filtradas = data.results.filter(
+        f => f.cliente && f.cliente.nombre == nombrecompleto
+      );
+
+      facturasCliente = facturasCliente.concat(filtradas);
+
+      url = data.next;
+    }
+
+    if (facturasCliente.length === 0) {
+      return res.status(404).json({ message: 'Factura no encontrada' });
+    }
+
+    res.json(facturasCliente);
+
+  } catch (error) {
+    console.error(error.response?.data || error.message);
+
+    res.status(500).json({
+      error: 'Error al buscar factura'
+    });
+  }
+};
+
+
 
 /*
 //NO BORRAR ESTA EXCELENT
