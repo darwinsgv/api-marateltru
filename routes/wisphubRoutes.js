@@ -12,7 +12,7 @@ const router = express.Router();
 const wisphubController = require('../controllers/wisphubController');
 router.get('/clientes/:cedula', wisphubController.getClienteWispPorCedula);
 router.get('/facturas/:cedula', wisphubController.getFacturaWispPorCedula);
-router.get('/facturas/:nombrecompleto', wisphubController.getFacturaWispPorNombreCompleto);
+router.get('/facturasxnombre/:nombrecompleto', wisphubController.getFacturaWispPorNombreCompleto);
 
 module.exports = router;
 
