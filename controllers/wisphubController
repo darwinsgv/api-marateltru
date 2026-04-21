@@ -138,6 +138,8 @@ const getFacturaWispPorCedula = async (req, res) => {
   }
 };
 
+
+
 /*
 //NO BORRAR ESTA EXCELENT
 const getClienteWispPorCedula = async (req, res) => {
