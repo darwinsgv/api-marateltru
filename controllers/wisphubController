@@ -67,22 +67,27 @@ const getClienteWispPorCedula = async (req, res) => {
   const { cedula } = req.params;
 
   try {
-    const response = await axios.get(
-      `https://api.wisphub.net/api/clientes/?cedula=${cedula}`,
-      {
+    let url = 'https://api.wisphub.net/api/clientes/?limit=100';
+
+    while (url) {
+      const response = await axios.get(url, {
         headers: {
           Authorization: `Api-Key ${process.env.WISP_API_KEY}`
         }
+      });
+
+      const data = response.data;
+
+      const cliente = data.results.find(c => c.cedula == cedula);
+
+      if (cliente) {
+        return res.json(cliente);
       }
-    );
 
-    const cliente = response.data.results[0];
-
-    if (!cliente) {
-      return res.status(404).json({ message: 'Cliente no encontrado' });
+      url = data.next;
     }
 
-    res.json(cliente);
+    return res.status(404).json({ message: 'Cliente no encontrado' });
 
   } catch (error) {
     console.error(error.response?.data || error.message);
