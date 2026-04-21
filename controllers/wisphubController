@@ -165,7 +165,7 @@ const getFacturaWispPorNombreCompleto = async (req, res) => {
     }
 
     if (facturasCliente.length === 0) {
-      return res.status(404).json({ message: 'Factura no encontrada' });
+      return res.status(404).json({ message: 'Factura por nombre no encontrada' });
     }
 
     res.json(facturasCliente);
