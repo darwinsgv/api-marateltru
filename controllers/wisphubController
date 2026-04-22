@@ -254,5 +254,6 @@ const getFacturaWispPorCedula = async (req, res) => {
 module.exports = {
   getClientesWisp,
   getClienteWispPorCedula,
-  getFacturaWispPorCedula
+  getFacturaWispPorCedula,
+  getFacturaWispPorNombreCompleto
 };
