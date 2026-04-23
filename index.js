@@ -1,3 +1,4 @@
+console.log("🔥🔥🔥 VERSION NUEVA BACKEND 🔥🔥🔥");
 console.log("Iniciando servidor...");
 
 require('dotenv').config();
