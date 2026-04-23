@@ -8,7 +8,8 @@ const getReferenciaXNumero = async (req, res) => {
     while (url) {
       const response = await axios.get(url, {
         headers: {
-          Authorization: `X-API-Key ${process.env.BDV_API_KEY}`
+          //Authorization: `X-API-Key ${process.env.BDV_API_KEY}`
+          Authorization: `Api-Key ${process.env.BDV_API_KEY}`
         }
       });
 
