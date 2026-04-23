@@ -37,7 +37,6 @@ console.log("✅ Rutas BDV cargadas");
 
 console.log("🔥 Iniciando servidor...");
 
-let bdvRoutes;
 
 try {
   bdvRoutes = require('./routes/bdvRoutes');
