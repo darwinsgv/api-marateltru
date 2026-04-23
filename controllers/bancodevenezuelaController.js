@@ -1,4 +1,4 @@
-/*const getReferenciaXNumero = async (req, res) => {
+const getReferenciaXNumero = async (req, res) => {
   const { referencia } = req.params;
 
   try {
@@ -9,7 +9,7 @@
       const response = await axios.get(url, {
         headers: {
           //Authorization: `X-API-Key ${process.env.BDV_API_KEY}`
-          Authorization: `Api-Key ${process.env.BDV_API_KEY}`
+          'Authorization': `X-API-Key ${process.env.BDV_API_KEY}`, // 👈 IMPORTANTE
         }
       });
 
@@ -33,8 +33,8 @@
       error: 'Error al buscar Referencia'
     });
   }
-};*/
-
+};
+/*
 const axios = require('axios');
 
 const getReferenciaXNumero = async (req, res) => {
@@ -61,7 +61,7 @@ const getReferenciaXNumero = async (req, res) => {
         }
       }
     );
-    
+
 
     console.log("Respuesta BDV:", response.data);
 
@@ -77,4 +77,4 @@ const getReferenciaXNumero = async (req, res) => {
   }
 };
 
-module.exports = { getReferenciaXNumero };
+module.exports = { getReferenciaXNumero };*/
