@@ -4,6 +4,8 @@ const bancodevenezuelaController = require('../controllers/bancodevenezuelaContr
 
 //router.get('/facturas/:cedula', wisphubController.getFacturaWispPorCedula);
 router.get('/referencias/:referencia', bancodevenezuelaController.getReferenciaXNumero);
-
+router.get('/test', (req, res) => {
+  res.json({ ok: true });
+});
 module.exports = router;
 

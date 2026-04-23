@@ -27,7 +27,9 @@ app.get('/', (req, res) => {
 
 app.use('/api', userRoutes);
 app.use('/api', wisphubRoutes);
+console.log("📦 Cargando rutas...");
 app.use('/api', bdvRoutes);
+console.log("✅ Rutas BDV cargadas");
 //app.use('/api/wisp', wisphubRoutes);
 
 //console.log(process.env.WISP_API_KEY);
