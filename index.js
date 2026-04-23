@@ -25,12 +25,32 @@ app.get('/', (req, res) => {
   res.send('API  funcionando 🚀');
 });
 
+
+
+
 app.use('/api', userRoutes);
 app.use('/api', wisphubRoutes);
 console.log("📦 Cargando rutas...");
-app.use('/api', bdvRoutes);
+//app.use('/api', bdvRoutes);
 console.log("✅ Rutas BDV cargadas");
-//app.use('/api/wisp', wisphubRoutes);
+
+console.log("🔥 Iniciando servidor...");
+
+let bdvRoutes;
+
+try {
+  bdvRoutes = require('./routes/bdvRoutes');
+  console.log("✅ bdvRoutes cargado correctamente");
+} catch (err) {
+  console.error("❌ ERROR cargando bdvRoutes:");
+  console.error(err);
+}
+
+app.use('/api', bdvRoutes);
+
+
+
+
 
 //console.log(process.env.WISP_API_KEY);
 app.use((err, req, res, next) => {
