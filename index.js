@@ -47,15 +47,3 @@ app.listen(PORT, () => {
 app.listen(3000, '0.0.0.0', () => {
   console.log('Servidor en http://192.168.78.237:3000');
 });*/
-
-/*
-Tu archivo cumple todo:
-
-✔ dotenv cargado primero
-✔ Logs de variables (útil para debug en Render)
-✔ Middlewares antes de rutas
-✔ Rutas bien montadas (/api)
-✔ Middleware de errores en el lugar correcto
-✔ PORT dinámico
-✔ listen al final
-*/

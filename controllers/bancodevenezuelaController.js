@@ -1,4 +1,4 @@
-const getReferenciaXNumero = async (req, res) => {
+/*const getReferenciaXNumero = async (req, res) => {
   const { referencia } = req.params;
 
   try {
@@ -33,5 +33,47 @@ const getReferenciaXNumero = async (req, res) => {
       error: 'Error al buscar Referencia'
     });
   }
+};*/
+
+const axios = require('axios');
+
+const getReferenciaXNumero = async (req, res) => {
+  const { referencia } = req.params;
+
+  try {
+    console.log("Consultando BDV con referencia:", referencia);
+
+    const response = await axios.post(
+      'https://bdvconciliacion.banvenez.com/getMovement',
+      {
+        cedulaPagador: "",
+        telefonoPagador: "",
+        telefonoDestino: "",
+        referencia: referencia,
+        fechaPago: "",
+        importe: "",
+        bancoOrigen: ""
+      },
+      {
+        headers: {
+          'Authorization': `X-API-Key ${process.env.BDV_API_KEY}`, // 👈 IMPORTANTE
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+
+    console.log("Respuesta BDV:", response.data);
+
+    return res.json(response.data);
+
+  } catch (error) {
+    console.error("ERROR BDV:", error.response?.data || error.message);
+
+    return res.status(500).json({
+      error: "Error al consultar BDV",
+      detalle: error.response?.data || error.message
+    });
+  }
 };
 
+module.exports = { getReferenciaXNumero };

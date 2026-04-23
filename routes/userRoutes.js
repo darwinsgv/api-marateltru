@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
+
 //const wisphubController = require('../controllers/wisphubController');
 
 /*
@@ -11,7 +12,6 @@ router.post('/registrodeusuario', userController.registrarUsuario);
 router.get('/contratos', userController.getUsuarios);
 router.post('/login', userController.loginUserXCI);
 router.post('/registrodeusuario', userController.registrarUsuario);
-//router.get('/clientes-wisp', wisphubController.getClientesWisp);
 
 
 

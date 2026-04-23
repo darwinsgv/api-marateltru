@@ -1,12 +1,3 @@
-/*const express = require('express');
-const router = express.Router();
-const wisphubController = require('../controllers/wisphubController');
-
-router.get('/clientes-wisp', wisphubController.getClienteWispPorCedula);
-
-module.exports = router;
-*/
-
 const express = require('express');
 const router = express.Router();
 const wisphubController = require('../controllers/wisphubController');
@@ -43,5 +34,4 @@ router.get('/clientes/:cedula', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-
-module.exports = router;*/
+*/
