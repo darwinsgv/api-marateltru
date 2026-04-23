@@ -9,7 +9,8 @@ const getReferenciaXNumero = async (req, res) => {
       const response = await axios.get(url, {
         headers: {
           //Authorization: `X-API-Key ${process.env.BDV_API_KEY}`
-          'Authorization': `X-API-Key ${process.env.BDV_API_KEY}`, // 👈 IMPORTANTE
+          //'Authorization': `X-API-Key ${process.env.BDV_API_KEY}`, // 👈 IMPORTANTE
+          'X-API-Key': process.env.BDV_API_KEY
         }
       });
 
@@ -76,5 +77,5 @@ const getReferenciaXNumero = async (req, res) => {
     });
   }
 };
-
-module.exports = { getReferenciaXNumero };*/
+*/
+module.exports = { getReferenciaXNumero };
