@@ -18,6 +18,7 @@ app.use(express.json());
 // importar rutas
 const userRoutes = require('./routes/userRoutes');
 const wisphubRoutes = require('./routes/wisphubRoutes');
+const bdvRoutes = require('./routes/bdvRoutes');
 
 
 app.get('/', (req, res) => {
@@ -26,6 +27,7 @@ app.get('/', (req, res) => {
 
 app.use('/api', userRoutes);
 app.use('/api', wisphubRoutes);
+app.use('/api', bdvRoutes);
 //app.use('/api/wisp', wisphubRoutes);
 
 //console.log(process.env.WISP_API_KEY);
