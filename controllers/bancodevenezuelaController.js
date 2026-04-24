@@ -47,12 +47,12 @@ const getReferenciaXNumero = async (req, res) => {
     const response = await axios.post(
       'https://bdvconciliacion.banvenez.com/getMovement',
       {
-        cedulaPagador: "V19643403",
+        cedulaPagador: "V020497239",
         telefonoPagador: "04246920139",
         telefonoDestino: "04246920139",
         referencia: referencia,
-        fechaPago: "2026-04-17",
-        importe: "1002998.41",
+        fechaPago: "2026-04-23",
+        importe: "12083.45",
         bancoOrigen: "0102"
       },
       {
