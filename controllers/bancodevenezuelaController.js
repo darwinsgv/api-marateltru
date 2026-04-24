@@ -56,10 +56,14 @@ const getReferenciaXNumero = async (req, res) => {
         bancoOrigen: "0102"
       },
       {
-        headers: {
+        /*headers: {
           'Authorization': `X-API-Key ${process.env.BDV_API_KEY}`, // 👈 IMPORTANTE
           'Content-Type': 'application/json'
-        }
+        }*/
+        headers: {
+           'X-API-Key': process.env.BDV_API_KEY,
+            'Content-Type': 'application/json'
+           }
       }
     );
 
