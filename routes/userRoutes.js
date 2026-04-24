@@ -9,7 +9,7 @@ router.get('/usuarios', userController.getUsuarios);
 router.post('/login', userController.loginUser);
 router.post('/registrodeusuario', userController.registrarUsuario);
 */
-router.get('/usuarios', userController.getUsuarioXpsw);
+router.get('/usuarios/psw/:psw', userController.getUsuariosXpsw);
 router.get('/contratos', userController.getUsuarios);
 router.post('/login', userController.loginUserXCI);
 router.post('/registrodeusuario', userController.registrarUsuario);

@@ -1,15 +1,23 @@
 const userModel = require('../models/userModel');
 
-const getUsuariosXpsw= (req, res) => {
-  console.log("5 req.body: ",req.body); // 👈 agrega esto
-  userModel.getUsuariosXPSW((err, results) => {
+const getUsuariosXpsw = (req, res) => {
+  const { psw } = req.params; // 👈 CLAVE
+
+  console.log("PSW recibido:", psw);
+
+  userModel.getUsuariosXPSW(psw, (err, results) => {
     if (err) {
+      console.error(err);
       return res.status(500).json(err);
     }
-    res.json(results);
-  });
-};//getUsuariosXpsw
 
+    if (results.length === 0) {
+      return res.status(404).json({ message: 'Usuario no encontrado' });
+    }
+
+    res.json(results[0]);
+  });
+};
 
 const getUsuarios = (req, res) => {
   userModel.getUsuarios((err, results) => {
