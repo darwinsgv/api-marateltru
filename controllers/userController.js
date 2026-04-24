@@ -7,9 +7,12 @@ const getUsuariosXpsw = (req, res) => {
 
   userModel.getUsuariosXPSW(psw, (err, results) => {
     if (err) {
-      console.error(err);
-      return res.status(500).json(err);
-    }
+  console.error("💥 ERROR MYSQL:", err);
+  return res.status(500).json({
+    fatal: true,
+    error: err.message
+  });
+}
 
     if (results.length === 0) {
       return res.status(404).json({ message: 'Usuario no encontrado' });
