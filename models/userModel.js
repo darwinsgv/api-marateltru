@@ -72,6 +72,7 @@ module.exports = {
   getUsuarios,
   loginUser,
   buscarUsuario,
-  registrarElUsuario
+  registrarElUsuario,
+  getUsuariosXPSW
 };
 
