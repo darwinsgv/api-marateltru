@@ -1,5 +1,18 @@
 const userModel = require('../models/userModel');
 const getUsuarios = (req, res) => {
+
+  const getUsuariosXpsw= (req, res) => {
+  console.log("5 req.body: ",req.body); // 👈 agrega esto
+  userModel.getUsuariosXPSW((err, results) => {
+    if (err) {
+      return res.status(500).json(err);
+    }
+    res.json(results);
+  });
+};//getUsuariosXpsw
+
+
+
   userModel.getUsuarios((err, results) => {
     if (err) {
       return res.status(500).json(err);

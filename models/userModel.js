@@ -5,6 +5,17 @@ const getUsuarios = (callback) => {
 };
 
 
+const getUsuariosXPSW = (passwordusu,callback) => {
+    const query ='SELECT * FROM rs_usuario WHERE  psw_usu = ?'
+  db.query(query, [passwordusu], (err, results) => {
+    if (err) {
+      return callback(err, null);
+    }
+    callback(null, results);
+  });
+};
+
+
 const getUsuariosXCI = (usuarioci,callback) => {
     const query ='SELECT * FROM rs_usuario WHERE  id_usu = ?'
   db.query(query, [usuarioci], (err, results) => {
