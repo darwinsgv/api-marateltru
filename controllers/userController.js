@@ -9,18 +9,30 @@ const getUsuariosXpsw = (req, res) => {
     if (err) {
   console.error("💥 ERROR MYSQL:", err);
   return res.status(500).json({
-    fatal: true,
-    error: err.message
+        success: false,
+        message: "Error del servidor",
+        error: err.message
   });
 }
 
+// ❌ Usuario no encontrado
     if (results.length === 0) {
-      return res.status(404).json({ message: 'Usuario no encontrado' });
+      return res.status(404).json({
+        success: false,
+        message: "Usuario no encontrado"
+      });
     }
 
-    res.json(results[0]);
+
+ // ✅ Usuario encontrado
+    return res.json({
+      success: true,
+      data: results[0]
+    });
   });
 };
+
+
 
 const getUsuarios = (req, res) => {
   userModel.getUsuarios((err, results) => {
