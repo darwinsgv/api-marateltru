@@ -1,3 +1,4 @@
+console.log("🔥 USANDO POOL DE MYSQL 🔥");
 const mysql = require('mysql2');
 
 const db = mysql.createPool({
