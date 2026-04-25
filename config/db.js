@@ -9,6 +9,12 @@ const db = mysql.createPool({
   database: process.env.DB_NAME
 });
 
+console.log("🔥 DB CONFIG:", {
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  database: process.env.DB_NAME
+});
+
 module.exports = db;
 
 
