@@ -1,8 +1,21 @@
 const db = require('../config/db');
 
+const guardarTasa = (nombretasa, valortasa) => {
+  return new Promise((resolve, reject) => {
+    const sql = `
+      INSERT INTO configuraciones (nombretasa, valortasa)
+      VALUES (?, ?)
+      ON DUPLICATE KEY UPDATE valor = VALUES(valortasa)
+    `;
 
+    db.query(sql, [nombretasa, valortasa], (err, result) => {
+      if (err) return reject(err);
+      resolve(result);
+    });
+  });
+};
 
-
+/*
 const guardarTasa = async (nombretasa, valortasa) => {
   const sql = `
     INSERT INTO configuraciones (nombretasa, valortasa)
@@ -11,7 +24,7 @@ const guardarTasa = async (nombretasa, valortasa) => {
   `;
 
   await db.query(sql, [nombretasa, valortasa]);
-};
+};*/
 
 
 
