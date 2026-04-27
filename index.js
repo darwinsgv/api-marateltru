@@ -20,6 +20,7 @@ app.use(express.json());
 const userRoutes = require('./routes/userRoutes');
 const wisphubRoutes = require('./routes/wisphubRoutes');
 const bdvRoutes = require('./routes/bdvRoutes');
+const configuracionesRoutes = require('./routes/configuracionesRoutes');
 
 
 app.get('/', (req, res) => {
@@ -27,17 +28,26 @@ app.get('/', (req, res) => {
 });
 
 
-
-
+/*
+app.use('/api', configuracionesRoutes);
 app.use('/api', userRoutes);
 app.use('/api', wisphubRoutes);
 console.log("📦 Cargando rutas...");
 //app.use('/api', bdvRoutes);
 console.log("✅ Rutas BDV cargadas");
+*/
+console.log("📦 Cargando rutas...");
+
+app.use('/api', configuracionesRoutes);
+app.use('/api', userRoutes);
+app.use('/api', wisphubRoutes);
+app.use('/api', bdvRoutes);
+
+console.log("✅ Todas las rutas cargadas");
 
 console.log("🔥 Iniciando servidor...");
 
-
+/*
 try {
   bdvRoutes = require('./routes/bdvRoutes');
   console.log("✅ bdvRoutes cargado correctamente");
@@ -45,7 +55,7 @@ try {
   console.error("❌ ERROR cargando bdvRoutes:");
   console.error(err);
 }
-
+*/
 app.use('/api', bdvRoutes);
 
 
