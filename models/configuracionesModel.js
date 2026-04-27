@@ -10,7 +10,7 @@ const guardarTasa = async (nombretasa, valortasa) => {
     ON DUPLICATE KEY UPDATE valor = VALUES(valor)
   `;
 
-  await db.query(sql, [nombre, valor]);
+  await db.query(sql, [nombretasa, valortasa]);
 };
 
 
