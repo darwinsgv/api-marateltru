@@ -1,5 +1,7 @@
 console.log("🔥 USANDO POOL DE MYSQL 🔥");
-const mysql = require('mysql2/promise'); // 🔥 CAMBIO CLAVE
+const mysql = require('mysql2'); 
+//const mysql = require('mysql2/promise'); // 🔥 CAMBIO CLAVE
+
 
 const db = mysql.createPool({
   connectionLimit: 10,
