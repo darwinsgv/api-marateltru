@@ -3,9 +3,9 @@ const db = require('../config/db');
 
 
 
-const guardarTasa = async (nombre, valor) => {
+const guardarTasa = async (nombretasa, valortasa) => {
   const sql = `
-    INSERT INTO configuraciones (nombre, valor)
+    INSERT INTO configuraciones (nombretasa, valortasa)
     VALUES (?, ?)
     ON DUPLICATE KEY UPDATE valor = VALUES(valor)
   `;

@@ -13,16 +13,16 @@ const registrarTasaXnombre = async (req, res) => {
     }
 
     for (const tasa of tasas) {
-      const { nombre, valor } = tasa;
+      const { nombretasa, valortasa } = tasa;
 
-      if (!nombre || valor === undefined) {
+      if (!nombretasa || valortasa === undefined) {
         return res.status(400).json({
           ok: false,
           mensaje: "Datos incompletos"
         });
       }
 
-      await userModel.guardarTasa(nombre, valor);
+      await userModel.guardarTasa(nombretasa, valortasa);
     }
 
     return res.json({
