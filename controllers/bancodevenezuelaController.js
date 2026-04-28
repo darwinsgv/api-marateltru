@@ -6,10 +6,12 @@ const getReferenciaXNumero = async (req, res) => {
 
     const response = await axios.post(
       'https://bdvconciliacionqa.banvenez.com:444/apis/bdv/consulta/movimientos/v2',
-    //'https://bdvconciliacion.banvenez.com/getMovement',
+      //'https://bdvconciliacion.banvenez.com/getMovement',
+      //http://200.11.243.176:444/getMovement,
+
       {
-        //cuenta: "01020501830003283374",
-        cuenta:"01020589150000001371",
+        cuenta: "01020501830003283374", //del  pdf
+        //cuenta:"01020589150000001371",//de wilmer
         fechaIni: "01/04/2026",
         fechaFin: "28/04/2026",
         tipoMoneda: "VES",
@@ -17,7 +19,7 @@ const getReferenciaXNumero = async (req, res) => {
         canal: "WEB"},//String(referencia).trim()      },
       {
         headers: {
-          //'Authorization': `X-API-Key ${process.env.BDV_API_KEY}`, // 👈 IMPORTANTE
+        //'Authorization': `X-API-Key ${process.env.BDV_API_KEY}`, // 👈 IMPORTANTE
          'Authorization': `X-API-Key 256D0FDD36F1B1B3F1208A9B6EC693`, //  QA (sandbox)
           'Content-Type': 'application/json'
         }
