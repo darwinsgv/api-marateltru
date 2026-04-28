@@ -135,6 +135,7 @@ const getUsuariosXpsw = (req, res) => {
 
 
 module.exports = {
+  getTasaOficial,
   getTasaXnombre,
   /*getUsuariosXpsw,*/
   registrarTasaXnombre
