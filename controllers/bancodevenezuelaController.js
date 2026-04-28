@@ -8,7 +8,8 @@ const getReferenciaXNumero = async (req, res) => {
       //'https://bdvconciliacionqa.banvenez.com:444/apis/bdv/consulta/movimientos/v2',
       //'https://bdvconciliacion.banvenez.com/getMovement',
       //http://200.11.243.176:444/getMovement,
-      'https://bdvconciliacion.banvenez.com/apis/bdv/consulta/',
+      //'https://bdvconciliacion.banvenez.com/apis/bdv/consulta/',
+      'https://bdvconciliacion.banvenez.com:443/apis/bdv/consulta/movimientos',
       {
         //cuenta: "01020501830003283374", //del  pdf
         cuenta:"01020589150000001371",//de wilmer
