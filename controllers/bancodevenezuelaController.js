@@ -1,3 +1,48 @@
+const getReferenciaXNumero = async (req, res) => {
+  const { referencia } = req.params;
+
+  try {
+    console.log("Consultando BDV con referencia:", referencia);
+
+    const response = await axios.post(
+      'https://bdvconciliacionqa.banvenez.com:444/apis/bdv/consulta/movimientos/v2',
+    //'https://bdvconciliacion.banvenez.com/getMovement',
+      {
+         "cuenta": "01020501830003283374",
+         "fechaIni": "01/01/2026",
+         "fechaFin": "28/01/2026",
+         "tipoMoneda": "VES",
+         "nroMovimiento": ""   
+      },
+      {
+        /*headers: {
+          'Authorization': `X-API-Key ${process.env.BDV_API_KEY}`, // 👈 IMPORTANTE
+          'Content-Type': 'application/json'
+        }*/
+        headers: {
+           'X-API-Key': process.env.BDV_API_KEY,
+            'Content-Type': 'application/json'
+           }
+      }
+    );
+
+
+    console.log("Respuesta BDV:", response.data);
+
+    return res.json(response.data);
+
+  } catch (error) {
+    console.error("ERROR COMPLETO BDV:", error.response?.data || error.message);
+    //console.error("ERROR COMPLETO:",     error.response?.data);
+    return res.status(500).json({
+      error: "Error al consultar BDV",
+      detalle: error.response?.data || error.message
+    });
+  }
+};
+
+
+
 /*const getReferenciaXNumero = async (req, res) => {
   const { referencia } = req.params;
 
