@@ -83,7 +83,7 @@ const getReferenciaXNumero = async (req, res) => {
 */
 const axios = require('axios');
 
-const getReferenciaXNumero = async (req, res) => {
+const getReferenciaXNumeroConciliacion = async (req, res) => {
   const { referencia } = req.params;
 
   try {
@@ -173,4 +173,7 @@ const getReferenciaXNumero = async (req, res) => {
   }
 };
 */
-module.exports = { getReferenciaXNumero };
+module.exports = { 
+  getReferenciaXNumero ,
+  getReferenciaXNumeroConciliacion
+};
