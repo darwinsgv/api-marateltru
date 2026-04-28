@@ -45,7 +45,8 @@ const getReferenciaXNumero = async (req, res) => {
     console.log("Consultando BDV con referencia:", referencia);
 
     const response = await axios.post(
-      'https://bdvconciliacion.banvenez.com/getMovement',
+      'https://bdvconciliacionqa.banvenez.com:444/apis/bdv/consulta/movimientos/v2',
+    //'https://bdvconciliacion.banvenez.com/getMovement',
       {
         cedulaPagador: "V020497239",
         telefonoPagador: "04246920139",
@@ -73,6 +74,51 @@ const getReferenciaXNumero = async (req, res) => {
     return res.json(response.data);
 
   } catch (error) {
+    console.error("ERROR COMPLETO BDV:", error.response?.data || error.message);
+    //console.error("ERROR COMPLETO:",     error.response?.data);
+    return res.status(500).json({
+      error: "Error al consultar BDV",
+      detalle: error.response?.data || error.message
+    });
+  }
+};
+
+/*
+const getReferenciaXNumero = async (req, res) => {
+  const { referencia } = req.params;
+
+  try {
+    console.log("Consultando BDV con referencia:", referencia);
+
+    const response = await axios.post(
+      'https://bdvconciliacion.banvenez.com/getMovement',
+      {
+        cedulaPagador: "V020497239",
+        telefonoPagador: "04246920139",
+        telefonoDestino: "04246920139",
+        referencia: referencia,
+        fechaPago: "2026-04-23",
+        importe: "12083.45",
+        bancoOrigen: "0102"
+      },
+      {
+        /*headers: {
+          'Authorization': `X-API-Key ${process.env.BDV_API_KEY}`, // 👈 IMPORTANTE
+          'Content-Type': 'application/json'
+        }*/
+ /*       headers: {
+           'X-API-Key': process.env.BDV_API_KEY,
+            'Content-Type': 'application/json'
+           }
+      }
+    );
+
+
+    console.log("Respuesta BDV:", response.data);
+
+    return res.json(response.data);
+
+  } catch (error) {
     console.error("ERROR BDV:", error.response?.data || error.message);
 
     return res.status(500).json({
@@ -81,5 +127,5 @@ const getReferenciaXNumero = async (req, res) => {
     });
   }
 };
-
+*/
 module.exports = { getReferenciaXNumero };
