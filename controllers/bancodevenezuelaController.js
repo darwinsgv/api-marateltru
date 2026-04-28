@@ -15,14 +15,16 @@ const getReferenciaXNumero = async (req, res) => {
          "nroMovimiento": ""   
       },
       {
-        /*headers: {
-          'Authorization': `X-API-Key ${process.env.BDV_API_KEY}`, // 👈 IMPORTANTE
-          'Content-Type': 'application/json'
-        }*/
         headers: {
+          //'Authorization': `X-API-Key ${process.env.BDV_API_KEY}`, // 👈 IMPORTANTE
+         'Authorization': `X-API-Key 256D0FDD36F1B1B3F1208A9B6EC693`, //  QA (sandbox)
+          'Content-Type': 'application/json'
+        }
+
+        /*headers: {
            'X-API-Key': process.env.BDV_API_KEY,
             'Content-Type': 'application/json'
-           }
+           }*/
       }
     );
 
