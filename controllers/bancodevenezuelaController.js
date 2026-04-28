@@ -12,7 +12,8 @@ const getReferenciaXNumero = async (req, res) => {
         fechaIni: "01/04/2026",
         fechaFin: "28/04/2026",
         tipoMoneda: "VES",
-        nroMovimiento: ""},//String(referencia).trim()      },
+        nroMovimiento: "",
+        canal: "WEB"},//String(referencia).trim()      },
       {
         headers: {
           //'Authorization': `X-API-Key ${process.env.BDV_API_KEY}`, // 👈 IMPORTANTE
