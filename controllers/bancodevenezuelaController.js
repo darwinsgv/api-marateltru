@@ -9,6 +9,7 @@ const getReferenciaXNumero = async (req, res) => {
       //'https://bdvconciliacion.banvenez.com/getMovement',
       //http://200.11.243.176:444/getMovement,
       //'https://bdvconciliacion.banvenez.com/apis/bdv/consulta/',
+       //https://bdvconciliacion.banvenez.com/apis/bdv/consulta/movimientos
       'https://bdvconciliacion.banvenez.com:443/apis/bdv/consulta/movimientos',
       {
         //cuenta: "01020501830003283374", //del  pdf
@@ -19,16 +20,16 @@ const getReferenciaXNumero = async (req, res) => {
         nroMovimiento: "",//String(referencia).trim()      },
         canal: "WEB"},
       {
-        headers: {
+        /*headers: {
          'Authorization': `X-API-Key ${process.env.BDV_API_KEY}`, // 👈 IMPORTANTE
          //'Authorization': `X-API-Key 256D0FDD36F1B1B3F1208A9B6EC693`, //  QA (sandbox)
           'Content-Type': 'application/json'
-        }
+        }*/
 
-        /*headers: {
+        headers: {
            'X-API-Key': process.env.BDV_API_KEY,
             'Content-Type': 'application/json'
-           }*/
+           }
       }
     );
 
