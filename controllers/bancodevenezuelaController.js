@@ -8,7 +8,8 @@ const getReferenciaXNumero = async (req, res) => {
       'https://bdvconciliacionqa.banvenez.com:444/apis/bdv/consulta/movimientos/v2',
     //'https://bdvconciliacion.banvenez.com/getMovement',
       {
-        cuenta: "01020501830003283374",
+        //cuenta: "01020501830003283374",
+        cuenta:"01020589150000001371",
         fechaIni: "01/04/2026",
         fechaFin: "28/04/2026",
         tipoMoneda: "VES",
