@@ -3,9 +3,9 @@ const router = express.Router();
 const configuracionesController = require('../controllers/configuracionesController');
 
 //router.get('/usuarios/psw/:psw', userController.getUsuariosXpsw);
+router.get('/configuraciones/tasaoficial', configuracionesController.getTasaOficial);
 router.get('/configuraciones/:nmdtasa', configuracionesController.getTasaXnombre);
 router.put('/configuraciones/bulk', configuracionesController.registrarTasaXnombre);
-router.get('/configuraciones/tasaoficial', configuracionesController.getTasaOficial);
 
 module.exports = router;
 
