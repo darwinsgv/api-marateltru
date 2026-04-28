@@ -5,14 +5,15 @@ const axios = require("axios");
 const getTasaOficial = async (req, res) => {
   try {
     const url = `https://v6.exchangerate-api.com/v6/${process.env.USD_API_KEY}/latest/USD`;
-
+                 
     const response = await axios.get(url);
 
-    const tasaCOP = response.data.conversion_rates.COP;
+    //const tasaCOP = response.data.conversion_rates.COP;
+    const tasaVES = response.data.conversion_rates.VES;
 
     res.json({
       ok: true,
-      tasa: tasaCOP
+      tasa: tasaVES
     });
 
   } catch (error) {
