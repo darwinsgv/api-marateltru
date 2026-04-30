@@ -15,7 +15,7 @@ const getReferenciaXNumero = async (req, res) => {
         //cuenta: "01020501830003283374", //del  pdf
         cuenta: process.env.BDV_ACCOUNT,//de wilmer
         fechaIni: "01/04/2026",
-        fechaFin: "30/04/2026",
+        fechaFin: "31/04/2026",
         tipoMoneda: "VES",
         //nroMovimiento:  String(referencia).trim(),
         nroMovimiento: "",
