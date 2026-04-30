@@ -17,7 +17,8 @@ const getReferenciaXNumero = async (req, res) => {
         fechaIni: "01/04/2026",
         fechaFin: "28/04/2026",
         tipoMoneda: "VES",
-        nroMovimiento:  String(referencia).trim(),//"",//String(referencia).trim()      },
+        //nroMovimiento:  String(referencia).trim(),
+        nroMovimiento: "",
         canal: "WEB"},
       {
         /*headers: {
