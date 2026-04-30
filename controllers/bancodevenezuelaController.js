@@ -13,11 +13,11 @@ const getReferenciaXNumero = async (req, res) => {
       'https://bdvconciliacion.banvenez.com:443/apis/bdv/consulta/movimientos',
       {
         //cuenta: "01020501830003283374", //del  pdf
-        cuenta:"01020589150000001371",//de wilmer
+        cuenta: process.env.BDV_ACCOUNT,//de wilmer
         fechaIni: "01/04/2026",
         fechaFin: "28/04/2026",
         tipoMoneda: "VES",
-        nroMovimiento: "",//String(referencia).trim()      },
+        nroMovimiento:  String(referencia).trim(),//"",//String(referencia).trim()      },
         canal: "WEB"},
       {
         /*headers: {
