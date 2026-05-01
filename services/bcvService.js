@@ -1,5 +1,6 @@
 import axios from "axios";
-import cheerio from "cheerio";
+//import cheerio from "cheerio";
+import * as cheerio from "cheerio";
 
 const URL = "https://www.bcv.org.ve/";
 //const URL = "https://www.bcv.org.ve/tasas-informativas-sistema-bancario";
