@@ -1,8 +1,30 @@
 //const userModel = require('../models/userModel');
 const userModel = require('../models/configuracionesModel');
-
+const axios = require("axios");
 
 const getTasaOficial = async (req, res) => {
+  try {
+    const url = `https://v6.exchangerate-api.com/v6/${process.env.USD_API_KEY}/latest/USD`;
+                 
+    const response = await axios.get(url);
+
+    //const tasaCOP = response.data.conversion_rates.COP;
+    const tasaVES = response.data.conversion_rates.VES;
+
+    res.json({
+      ok: true,
+      tasa: tasaVES
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      error: "Error al obtener tasa oficial"
+    });
+  }
+};//fin getTasaOficial()
+
+/*const getTasaOficial = async (req, res) => {
   try {
     //const url = `https://v6.exchangerate-api.com/v6/${process.env.USD_API_KEY}/pair/${from}/${to}/${monto}`;
     const url = `https://v6.exchangerate-api.com/v6/${process.env.USD_API_KEY}/latest/USD`;
@@ -20,7 +42,7 @@ const getTasaOficial = async (req, res) => {
     });
   }
 };//fin getTasaOficial() 
-
+*/
 
 const registrarTasaXnombre = async (req, res) => {
   try {
@@ -135,6 +157,7 @@ const getUsuariosXpsw = (req, res) => {
 
 
 module.exports = {
+  getTasaOficial,
   getTasaXnombre,
   /*getUsuariosXpsw,*/
   registrarTasaXnombre
