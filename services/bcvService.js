@@ -2,6 +2,8 @@ import axios from "axios";
 import cheerio from "cheerio";
 
 const URL = "https://www.bcv.org.ve/";
+//const URL = "https://www.bcv.org.ve/tasas-informativas-sistema-bancario";
+
 
 export async function obtenerTasaBCV() {
   try {

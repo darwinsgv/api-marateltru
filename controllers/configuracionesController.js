@@ -1,6 +1,9 @@
 //const userModel = require('../models/userModel');
 const userModel = require('../models/configuracionesModel');
 const axios = require("axios");
+const MARATELTRU_API_URL = 'https://api-marateltru.onrender.com/api';//OnLine
+
+
 
 const getTasaOficial = async (req, res) => {
   try {
@@ -117,46 +120,62 @@ const getTasaXnombre = (req, res) => {
 };//fin getTasaXnombre() 
 
 
+import { obtenerTasaBCV } from "../services/bcvService.js";
 
-/*
-const getUsuariosXpsw = (req, res) => {
-  const { psw } = req.params; // 👈 CLAVE
+const getTasaBCV = async (req, res) => {
+  try {
+    const data = await obtenerTasaBCV();
 
-  console.log("PSW recibido:", psw);
-
-  userModel.getUsuariosXPSW(psw, (err, results) => {
-    if (err) {
-  console.error("💥 ERROR MYSQL:", err);
-  return res.status(500).json({
-        success: false,
-        message: "Error del servidor",
-        error: err.message
-  });
-}
-
-// ❌ Usuario no encontrado
-    if (results.length === 0) {
-      return res.status(404).json({
-        success: false,
-        message: "Usuario no encontrado"
+    if (!data) {
+      return res.status(400).json({
+        ok: false,
+        error: "No se pudo obtener la tasa"
       });
     }
 
-
- // ✅ Usuario encontrado
-    return res.json({
-      success: true,
-      data: results[0]
+    res.json({
+      ok: true,
+      tasa: data.tasa,
+      moneda: data.moneda,
+      fuente: data.fuente
     });
-  });
-};
+
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      error: "Error al obtener tasa oficial"
+    });
+  }
+};//fin de getTasaBCV
+
+
+/*
+const getTasaOficial = async (req, res) => {
+  try {
+    const url = `https://v6.exchangerate-api.com/v6/${process.env.USD_API_KEY}/latest/USD`;
+                 
+    const response = await axios.get(url);
+
+    //const tasaCOP = response.data.conversion_rates.COP;
+    const tasaVES = response.data.conversion_rates.VES;
+
+    res.json({
+      ok: true,
+      tasa: tasaVES
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      error: "Error al obtener tasa oficial"
+    });
+  }
+};//fin getTasaOficial()
 
 */
 
-
-
-
 module.exports = {
+  getTasaBCV,
   getTasaOficial,
   getTasaXnombre,
   /*getUsuariosXpsw,*/
