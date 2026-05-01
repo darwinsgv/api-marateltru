@@ -175,7 +175,6 @@ const getTasaOficial = async (req, res) => {
 */
 
 module.exports = {
-  getTasaBCV,
   getTasaOficial,
   getTasaXnombre,
   /*getUsuariosXpsw,*/
