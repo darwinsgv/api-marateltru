@@ -119,8 +119,8 @@ const getTasaXnombre = (req, res) => {
   });//fin userModel.getTasaXnombre
 };//fin getTasaXnombre() 
 
-
-import { obtenerTasaBCV } from "../services/bcvService.js";
+/*
+//import { obtenerTasaBCV } from "../services/bcvService.js";
 
 const getTasaBCV = async (req, res) => {
   try {
@@ -147,7 +147,7 @@ const getTasaBCV = async (req, res) => {
     });
   }
 };//fin de getTasaBCV
-
+*/
 
 /*
 const getTasaOficial = async (req, res) => {
